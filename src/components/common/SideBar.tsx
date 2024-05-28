@@ -2,7 +2,7 @@ import { Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItem
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Box } from '@mui/system'
-import React from 'react'
+import React, { FC } from 'react'
 
 {/* 型定義を一つにまとめられる */}
 interface SideBarProps { 
@@ -18,7 +18,7 @@ interface SideBarProps {
 //     handleDrawerToggle: () => void
 // }
 
-const SideBar = ({drawerWidth, mobileOpen, handleDrawerToggle}: SideBarProps) => {
+const SideBar:FC<SideBarProps> = ({drawerWidth, mobileOpen, handleDrawerToggle}) => {
     const drawer = (
         <div>
           <Toolbar />
