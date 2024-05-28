@@ -3,12 +3,20 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Box } from '@mui/system'
 import React from 'react'
+import HomeIcon from '@mui/icons-material/Home';
+import BarChartIcon from '@mui/icons-material/BarChart';
 
 {/* 型定義を一つにまとめられる */}
 interface SideBarProps { 
     drawerWidth: number,
     mobileOpen: boolean,
     handleDrawerToggle: () => void
+}
+
+interface menuItem {
+    text: string,
+    path: string,
+    icon: React.ComponentType,
 }
 
 // これでもいい。定義できる型が多いらしい
@@ -19,6 +27,12 @@ interface SideBarProps {
 // }
 
 const SideBar = ({drawerWidth, mobileOpen, handleDrawerToggle}: SideBarProps) => {
+
+    const MenuItems:menuItem[] = [
+        {text: "Home", path: "/", icon: HomeIcon},
+        {text: "Report", path: "/report", icon: BarChartIcon}
+    ]
+
     const drawer = (
         <div>
           <Toolbar />
