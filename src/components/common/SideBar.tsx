@@ -38,26 +38,14 @@ const SideBar = ({drawerWidth, mobileOpen, handleDrawerToggle}: SideBarProps) =>
           <Toolbar />
           <Divider /> {/* 横線 */}
           <List> {/* サイドバーの項目リスト */}
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem key={text} disablePadding>
+            {MenuItems.map((item, index) => (
+              <ListItem key={index} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                    {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+                    <item.icon />
                   </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
+                  <ListItemText primary={item.text} />
                 </ListItemButton>
               </ListItem>
             ))}
