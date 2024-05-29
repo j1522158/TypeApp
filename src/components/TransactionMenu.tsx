@@ -2,7 +2,7 @@ import React from 'react'
 
 const TransactionMenu = () => {
   return (
-    <div>TransactionMenu</div>
+    <div>TransactionMenu置くとこ</div>
   )
 }
 

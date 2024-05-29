@@ -2,7 +2,7 @@ import React from 'react'
 
 const TransactionForm = () => {
   return (
-    <div>TransactionForm</div>
+    <div>TransactionForm置くとこ</div>
   )
 }
 

@@ -7,9 +7,9 @@ import TransactionMenu from '../components/TransactionMenu'
 
 const Home = () => {
   return (
-    <Box>
+    <Box sx={{display: 'flex'}}>
       {/* 左 */}
-      <Box>
+      <Box sx={{flexGrow: 1}}>
         <MonthlySummary />
         <Calender />
       </Box>
