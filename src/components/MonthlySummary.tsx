@@ -4,6 +4,7 @@ import CurrencyYenIcon from '@mui/icons-material/CurrencyYen';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import { fontSize } from '@mui/system';
+import { theme } from '../theme/theme';
 
 const MonthlySummary = () => {
   return (
@@ -12,7 +13,7 @@ const MonthlySummary = () => {
       <Grid item xs={4} display={"flex"} flexDirection={"column"}>
         <Card 
           sx={{
-            bgcolor: 'blue', 
+            bgcolor: (theme) => theme.palette.incomeColor.main, 
             color: 'white', 
             borderRadius: '10px',
             flexGrow: 1
@@ -38,7 +39,7 @@ const MonthlySummary = () => {
       <Grid item xs={4} display={"flex"} flexDirection={"column"}>
         <Card 
           sx={{
-            bgcolor: 'red', 
+            bgcolor: (theme) => theme.palette.expenceColor.main, 
             color: 'white', 
             borderRadius: '10px', 
             flexGrow: 1
@@ -64,7 +65,7 @@ const MonthlySummary = () => {
       <Grid item xs={4} display={"flex"} flexDirection={"column"}>
         <Card 
           sx={{
-            bgcolor: 'green', 
+            bgcolor: (theme) => theme.palette.balanceColor.main, 
             color: 'white', 
             borderRadius: '10px',
             flexGrow: 1
