@@ -12,10 +12,10 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-//アイコン
 import NotesIcon from "@mui/icons-material/Notes";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import FastfoodIcon from "@mui/icons-material/Fastfood";
+import DailySummary from "./DailySummary";
 
 const TransactionMenu = () => {
   const menuDrawerWidth = 320;
@@ -36,6 +36,7 @@ const TransactionMenu = () => {
     >
       <Stack sx={{ height: "100%" }} spacing={2}>
         <Typography fontWeight={"fontWeightBold"}>日時： 2023-12-31</Typography>
+        <DailySummary />
         {/* 内訳タイトル&内訳追加ボタン */}
         <Box
           sx={{
