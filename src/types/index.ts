@@ -9,5 +9,11 @@ export interface Transaction {
     content: string,
     type: TransactionType,
     date: string,
-    category: IncomeType | ExpenseType
+    category: IncomeType | ExpenseType;
+}
+
+export interface Balance {
+    income: number,
+    expense: number,
+    balance: number,
 }
