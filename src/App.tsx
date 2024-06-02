@@ -14,25 +14,32 @@ import {db} from "./firebase"
 import { async } from '@firebase/util';
 
 function App() {
+
+  function isFireStoreError(err: unknown):err is {code: string, message: string} {
+    return typeof err === "object" && err !== null && "code" in err
+  }
+
   const[transactions,setTransactions] = useState<Transaction[]>([]);
+
   {/* 初回レンダリング時のみ取得 > useEffect? */}
   useEffect((() => {
     const fetchTransactions = async() => {
       try {
         const querySnapshot = await getDocs(collection(db, "Transactions"));
         const transactionsData =querySnapshot.docs.map((doc) => {
-          //console.log(doc.id, " => ", doc.data());
           return {
             ...doc.data(),
             id: doc.id, 
           } as Transaction //　型アサーション
         });
-
-        console.log(transactionsData)
         setTransactions(transactionsData)
-
       } catch(err) {
-        // error
+        if(isFireStoreError(err)) {
+          console.error("fireStoreエラー: ", err)
+        } else {
+          console.error("一般エラー: ", err)
+        }
+
       }
     }
     fetchTransactions();
