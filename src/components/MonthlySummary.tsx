@@ -6,12 +6,14 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import { fontSize } from '@mui/system';
 import { theme } from '../theme/theme';
 import { Transaction } from '../types';
+import { financeCalculations } from '../utils/financeCalculations';
 
 interface MonthlySummaryProps {
   monthlyTransactions: Transaction[], 
 }
 
 const MonthlySummary = ({monthlyTransactions}: MonthlySummaryProps) => {
+  const {income, expense, balance} = financeCalculations(monthlyTransactions)
   return (
     <Grid container spacing={{xs: 1, sm: 2}} mb={2}> {/* container: 要素が横並びになる */}
       {/* 収入 */}
@@ -36,7 +38,9 @@ const MonthlySummary = ({monthlyTransactions}: MonthlySummaryProps) => {
               wordBreak: "break-word", 
               fontSize: { xs: ".8rem", sm: "1rem", md: "1.2rem" },
           }}
-            >¥300</Typography>
+            >
+              ¥{income}
+            </Typography>
           </CardContent>
         </Card>
       </Grid>
@@ -62,7 +66,9 @@ const MonthlySummary = ({monthlyTransactions}: MonthlySummaryProps) => {
               wordBreak: "break-word", 
               fontSize: { xs: ".8rem", sm: "1rem", md: "1.2rem" },
           }}
-            >¥300</Typography>
+            >
+              ¥{expense}
+            </Typography>
           </CardContent>
         </Card>
       </Grid>
@@ -88,7 +94,9 @@ const MonthlySummary = ({monthlyTransactions}: MonthlySummaryProps) => {
               wordBreak: "break-word", 
               fontSize: { xs: ".8rem", sm: "1rem", md: "1.2rem" },
           }}
-            >¥300</Typography>
+            >
+              ¥{balance}
+            </Typography>
           </CardContent>
         </Card>
       </Grid>
