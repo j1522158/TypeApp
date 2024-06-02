@@ -4,13 +4,13 @@ import { blue, green, red } from "@mui/material/colors";
 declare module "@mui/material/styles" {
     interface Palette {
         incomeColor: PaletteColor;
-        expenceColor: PaletteColor;
+        expenseColor: PaletteColor;
         balanceColor: PaletteColor;
     }
 
     interface PaletteOptions {
         incomeColor: PaletteColorOptions;
-        expenceColor: PaletteColorOptions;
+        expenseColor: PaletteColorOptions;
         balanceColor: PaletteColorOptions;
     }
 }
@@ -29,7 +29,7 @@ export const theme = createTheme({
             light: blue[100],
             dark: blue[700]
         },
-        expenceColor: {
+        expenseColor: {
             main: red[500],
             light: red[100],
             dark: red[700]

@@ -18,10 +18,10 @@ const Calendar = () => {
           {eventInfo.event.extendedProps.income}
         </div>
         <div className='money' id="event-expense">
-          {eventInfo.event.extendedProps.income}
+          {eventInfo.event.extendedProps.expense}
         </div>
         <div className='money' id="event-blance">
-          {eventInfo.event.extendedProps.income}
+          {eventInfo.event.extendedProps.balance}
         </div>
       </div>
     )

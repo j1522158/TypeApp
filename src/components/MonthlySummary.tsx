@@ -48,7 +48,7 @@ const MonthlySummary = ({monthlyTransactions}: MonthlySummaryProps) => {
       <Grid item xs={4} display={"flex"} flexDirection={"column"}>
         <Card 
           sx={{
-            bgcolor: (theme) => theme.palette.expenceColor.main, 
+            bgcolor: (theme) => theme.palette.expenseColor.main, 
             color: 'white', 
             borderRadius: '10px', 
             flexGrow: 1
