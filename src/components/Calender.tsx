@@ -1,8 +1,15 @@
+import FullCalendar from '@fullcalendar/react'
 import React from 'react'
+import dayGridPlugin from "@fullcalendar/daygrid"
+import jaLocale from "@fullcalendar/core/locales/ja"
 
 const Calender = () => {
   return (
-    <div>Calender置くとこ</div>
+    <FullCalendar 
+    locale={jaLocale}
+     plugins={[dayGridPlugin]}
+     initialView='dayGridMonth'
+    />
   )
 }
 
