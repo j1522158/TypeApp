@@ -31,10 +31,12 @@ const TransactionMenu = () => {
           height: `calc(100% - 64px)`, // AppBarの高さを引いたビューポートの高さ
         },
       }}
-      variant={"permanent"}
+      
+      variant={"permanent"} // 固定のドロワー
       anchor={"right"}
     >
-      <Stack sx={{ height: "100%" }} spacing={2}>
+
+      <Stack sx={{ height: "100%" }} spacing={2}> 
         <Typography fontWeight={"fontWeightBold"}>日時： 2023-12-31</Typography>
         <DailySummary />
         {/* 内訳タイトル&内訳追加ボタン */}
