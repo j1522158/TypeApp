@@ -21,7 +21,7 @@ const Home = ({monthlyTransactions}: HomeProps) => {
       {/* 右 */}
       <Box>
         <TransactionMenu />
-        <TransactionForm />
+        {/* <TransactionForm /> */}
       </Box>
     </Box>
   )

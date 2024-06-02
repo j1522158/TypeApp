@@ -49,7 +49,7 @@ const TransactionForm = () => {
       </Box>
       {/* フォーム要素 */}
       <Box component={"form"}>
-        <Stack spacing={2}>
+        <Stack spacing={2}> 
           {/* 収支切り替えボタン */}
           <ButtonGroup fullWidth>
             <Button variant={"contained"} color="error">
