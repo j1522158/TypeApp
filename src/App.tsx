@@ -8,10 +8,12 @@ import AppLayout from './components/layout/AppLayout';
 import Home from './pages/Home';
 import NoMatch from './pages/NoMatch';
 import Report from './pages/Report';
-import {theme} from './theme/theme';
+import { theme } from './theme/theme';
 import { collection, getDocs } from "firebase/firestore";
-import {db} from "./firebase" 
+import { db } from "./firebase" 
 import { async } from '@firebase/util';
+import { format } from 'date-fns';
+import { formatMonth } from './utils/formatting';
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
   }
 
   const[transactions,setTransactions] = useState<Transaction[]>([]);
+  const[currentMonth,setCurrentMonth] = useState(new Date());
+  format(currentMonth, "yyyy-MM")
 
   {/* 初回レンダリング時のみ取得 > useEffect? */}
   useEffect((() => {
@@ -35,22 +39,26 @@ function App() {
         setTransactions(transactionsData)
       } catch(err) {
         if(isFireStoreError(err)) {
-          console.error("fireStoreエラー: ", err)
+          console.error("FireStoreエラー: ", err)
         } else {
           console.error("一般エラー: ", err)
         }
-
       }
     }
     fetchTransactions();
   }))
+  
+  const monthlyTransactions = transactions.filter((transaction) => {
+    return transaction.date.startsWith(formatMonth(currentMonth))
+  })
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline /> {/* デフォルトCSSをリセットしてMUAのテーマを反映する */}
       <Router>
       <Routes>
         <Route path="/" element={<AppLayout />}>
-          <Route index element={<Home />}/>
+          <Route index element={<Home monthlyTransactions={monthlyTransactions}/>}/>
           <Route path="/report" element={<Report />}/>
           <Route path="*" element={<NoMatch />}/>
         </Route>

@@ -5,8 +5,13 @@ import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import { fontSize } from '@mui/system';
 import { theme } from '../theme/theme';
+import { Transaction } from '../types';
 
-const MonthlySummary = () => {
+interface MonthlySummaryProps {
+  monthlyTransactions: Transaction[], 
+}
+
+const MonthlySummary = ({monthlyTransactions}: MonthlySummaryProps) => {
   return (
     <Grid container spacing={{xs: 1, sm: 2}} mb={2}> {/* container: 要素が横並びになる */}
       {/* 収入 */}
