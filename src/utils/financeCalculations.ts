@@ -18,7 +18,7 @@ export function calculateDailyBalances(transactions: Transaction[]): Record<stri
     return transactions.reduce<Record<string, Balance>>((acc, transaction) => {
         const day = transaction.date;
         if(!acc[day]){
-            acc.day = {income: 0, expense: 0, balance: 0}
+            acc[day] = {income: 0, expense: 0, balance: 0}
         }
         if(transaction.type === "income") {
             acc[day].income += transaction.amount

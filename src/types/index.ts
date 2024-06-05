@@ -1,3 +1,5 @@
+// 型定義専用のクラス
+
 export type TransactionType = "income" | "expense";
 
 export type IncomeType = "給与" | "副収入" | "小遣い";
@@ -17,3 +19,11 @@ export interface Balance {
     expense: number,
     balance: number,
 }
+
+export interface CalenderContent {
+    start: string,
+    income: string,
+    expense: string,
+    balance: string
+}
+
