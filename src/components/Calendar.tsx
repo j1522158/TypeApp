@@ -9,10 +9,11 @@ import { calculateDailyBalances } from '../utils/financeCalculations'
 import { formatCurrency } from '../utils/formatting'
 
 interface CalenderProps {
-  monthlyTransactions: Transaction[]
+  monthlyTransactions: Transaction[],
+  setCurrentMonth: React.Dispatch<React.SetStateAction<Date>>
 }
 
-const Calendar = ({monthlyTransactions}: CalenderProps) => {
+const Calendar = ({monthlyTransactions, setCurrentMonth}: CalenderProps) => {
 
   // 日付ごとの収支を計算する関数
   const dailyBalances = calculateDailyBalances(monthlyTransactions)
