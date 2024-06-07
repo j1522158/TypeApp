@@ -26,7 +26,7 @@ function App() {
   format(currentMonth, "yyyy-MM")
 
   //初回レンダリング時のみ取得 > useEffect firestoreの全データ取得
-  useEffect((() => {
+  useEffect(() => {
     const fetchTransactions = async() => {
       try {
         const querySnapshot = await getDocs(collection(db, "Transactions"));
@@ -46,7 +46,7 @@ function App() {
       }
     }
     fetchTransactions();
-  }))
+  }, [])
   
   // ひと月分のデータの取得
   const monthlyTransactions = transactions.filter((transaction) => {
