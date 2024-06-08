@@ -16,8 +16,14 @@ import NotesIcon from "@mui/icons-material/Notes";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import FastfoodIcon from "@mui/icons-material/Fastfood";
 import DailySummary from "./DailySummary";
+import { Transaction } from "../types";
 
-const TransactionMenu = () => {
+interface TransactionMenuProps {
+  dailyTransactions: Transaction[],
+  currentDay: string
+}
+
+const TransactionMenu = ({dailyTransactions,currentDay}:TransactionMenuProps) => {
   const menuDrawerWidth = 320;
   return (
     <Drawer
