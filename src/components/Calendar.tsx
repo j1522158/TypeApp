@@ -8,6 +8,8 @@ import { Balance, CalenderContent, Transaction } from '../types'
 import { calculateDailyBalances } from '../utils/financeCalculations'
 import { formatCurrency } from '../utils/formatting'
 import interactionPlugin, { DateClickArg } from '@fullcalendar/interaction'
+import { theme } from '../theme/theme'
+import { useTheme } from '@mui/material'
 
 interface CalenderProps {
   monthlyTransactions: Transaction[],
@@ -17,6 +19,8 @@ interface CalenderProps {
 }
 
 const Calendar = ({monthlyTransactions, setCurrentMonth, setCurrentDay, currentDay}: CalenderProps) => {
+
+  const theme = useTheme()
 
   // 日付ごとの収支を計算する関数
   const dailyBalances = calculateDailyBalances(monthlyTransactions)
@@ -37,7 +41,7 @@ const Calendar = ({monthlyTransactions, setCurrentMonth, setCurrentDay, currentD
   const backgroundEvent = {
     start: currentDay,
    display: "background",
-   backgroundColor: "red"
+   backgroundColor: theme.palette.incomeColor.light
   }
 
   const calenderEvents = createCalenderEvents(dailyBalances);
