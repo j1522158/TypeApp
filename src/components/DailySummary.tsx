@@ -1,7 +1,12 @@
 import { Box, Card, CardContent, Grid, Typography } from "@mui/material";
 import React from "react";
+import { Transaction } from "../types";
 
-const DailySummary = () => {
+interface DailySummaryProps {
+  dailyTransactions: Transaction[]
+}
+
+const DailySummary = ({dailyTransactions}:DailySummaryProps) => {
   return (
     <Box>
       <Grid container spacing={2}>

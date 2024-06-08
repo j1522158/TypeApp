@@ -17,6 +17,7 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import FastfoodIcon from "@mui/icons-material/Fastfood";
 import DailySummary from "./DailySummary";
 import { Transaction } from "../types";
+import { formatCurrency } from "../utils/formatting";
 
 interface TransactionMenuProps {
   dailyTransactions: Transaction[],
@@ -44,7 +45,7 @@ const TransactionMenu = ({dailyTransactions,currentDay}:TransactionMenuProps) =>
 
       <Stack sx={{ height: "100%" }} spacing={2}> 
         <Typography fontWeight={"fontWeightBold"}>日時： {currentDay}</Typography>
-        <DailySummary />
+        <DailySummary dailyTransactions={dailyTransactions}/>
         {/* 内訳タイトル&内訳追加ボタン */}
         <Box
           sx={{
@@ -67,6 +68,7 @@ const TransactionMenu = ({dailyTransactions,currentDay}:TransactionMenuProps) =>
         <Box sx={{ flexGrow: 1, overflowY: "auto" }}>
           <List aria-label="取引履歴">
             <Stack spacing={2}>
+              {dailyTransactions.map((transaction) => 
               <ListItem disablePadding>
                 <Card
                   sx={{
@@ -93,12 +95,12 @@ const TransactionMenu = ({dailyTransactions,currentDay}:TransactionMenuProps) =>
                             display="block"
                             gutterBottom
                           >
-                            食費
+                            {transaction.category}
                           </Typography>
                         </Grid>
                         <Grid item xs={4}>
                           <Typography variant="body2" gutterBottom>
-                            卵
+                            {transaction.content}
                           </Typography>
                         </Grid>
                         <Grid item xs={4.5}>
@@ -110,7 +112,7 @@ const TransactionMenu = ({dailyTransactions,currentDay}:TransactionMenuProps) =>
                               wordBreak: "break-all",
                             }}
                           >
-                            ¥300
+                            ¥{formatCurrency(transaction.amount)}
                           </Typography>
                         </Grid>
                       </Grid>
@@ -118,6 +120,7 @@ const TransactionMenu = ({dailyTransactions,currentDay}:TransactionMenuProps) =>
                   </CardActionArea>
                 </Card>
               </ListItem>
+              )}
             </Stack>
           </List>
         </Box>
