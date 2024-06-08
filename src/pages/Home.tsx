@@ -16,6 +16,12 @@ const Home = ({monthlyTransactions,setCurrentMonth}: HomeProps) => {
   const today = format (new Date(), "yyyy-MM-dd");
   console.log(today);
   const[currentDay,setCurrentDay] = useState(today);
+
+  const dailyTransactions = monthlyTransactions.filter((transaction) => {
+    return transaction.date === currentDay;
+  });
+  console.log(dailyTransactions);
+
   return (
     <Box sx={{display: 'flex'}}>
       {/* 左 */}
