@@ -1,5 +1,6 @@
 import { Box } from '@mui/material'
-import React from 'react'
+import { format } from 'date-fns'
+import React, { useState } from 'react'
 import Calendar from '../components/Calendar'
 import MonthlySummary from '../components/MonthlySummary'
 import TransactionForm from '../components/TransactionForm'
@@ -12,12 +13,19 @@ interface HomeProps {
 }
 
 const Home = ({monthlyTransactions,setCurrentMonth}: HomeProps) => {
+  const today = format (new Date(), "yyyy-MM-dd");
+  console.log(today);
+  const[currentDay,setCurrentDay] = useState(today);
   return (
     <Box sx={{display: 'flex'}}>
       {/* 左 */}
       <Box sx={{flexGrow: 1}}>
         <MonthlySummary monthlyTransactions={monthlyTransactions}/>
-        <Calendar monthlyTransactions={monthlyTransactions} setCurrentMonth={setCurrentMonth}/>
+        <Calendar 
+          monthlyTransactions={monthlyTransactions} 
+          setCurrentMonth={setCurrentMonth}
+          setCurrentDay={setCurrentDay}
+        />
       </Box>
       {/* 右 */}
       <Box>
