@@ -12,10 +12,11 @@ import interactionPlugin, { DateClickArg } from '@fullcalendar/interaction'
 interface CalenderProps {
   monthlyTransactions: Transaction[],
   setCurrentMonth: React.Dispatch<React.SetStateAction<Date>>,
-  setCurrentDay: React.Dispatch<React.SetStateAction<string>>
+  setCurrentDay: React.Dispatch<React.SetStateAction<string>>,
+  currentDay: string
 }
 
-const Calendar = ({monthlyTransactions, setCurrentMonth, setCurrentDay}: CalenderProps) => {
+const Calendar = ({monthlyTransactions, setCurrentMonth, setCurrentDay, currentDay}: CalenderProps) => {
 
   // 日付ごとの収支を計算する関数
   const dailyBalances = calculateDailyBalances(monthlyTransactions)
@@ -31,6 +32,12 @@ const Calendar = ({monthlyTransactions, setCurrentMonth, setCurrentDay}: Calende
         balance: formatCurrency(balance)
       }
     })
+  }
+
+  const backgroundEvent = {
+    start: currentDay,
+   display: "background",
+   backgroundColor: "red"
   }
 
   const calenderEvents = createCalenderEvents(dailyBalances);
