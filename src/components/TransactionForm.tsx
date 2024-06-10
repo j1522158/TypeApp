@@ -15,10 +15,10 @@ import FastfoodIcon from "@mui/icons-material/Fastfood"; //食事アイコン
 
 interface TransactionFormProps {
   onCloseForm: () => void,
-  isEntryDrawerOpen: boolean
+  isEntryDrawerOpen: boolean,
 }
 
-const TransactionForm = ({onCloseForm, isEntryDrawerOpen}: TransactionFormProps) => {
+const TransactionForm = ({onCloseForm,isEntryDrawerOpen}: TransactionFormProps) => {
   const formWidth = 320;
   return (
     <Box

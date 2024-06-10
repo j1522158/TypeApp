@@ -28,6 +28,10 @@ const Home = ({monthlyTransactions,setCurrentMonth}: HomeProps) => {
     setIsEntryDrawerOpen(!isEntryDrawerOpen)
   };
 
+  const handleAddTransactionForm = () => {
+    setIsEntryDrawerOpen(!isEntryDrawerOpen)
+  };
+
   return (
     <Box sx={{display: 'flex'}}>
       <Box sx={{flexGrow: 1}}>
@@ -41,7 +45,7 @@ const Home = ({monthlyTransactions,setCurrentMonth}: HomeProps) => {
         />
       </Box>
       <Box>
-        <TransactionMenu dailyTransactions={dailyTransactions} currentDay={currentDay}/>
+        <TransactionMenu dailyTransactions={dailyTransactions} currentDay={currentDay} handleAddTransactionForm={handleAddTransactionForm}/>
         <TransactionForm onCloseForm={closeForm} isEntryDrawerOpen={isEntryDrawerOpen}/>
       </Box>
     </Box>

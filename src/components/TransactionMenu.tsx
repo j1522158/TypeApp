@@ -21,10 +21,11 @@ import { formatCurrency } from "../utils/formatting";
 
 interface TransactionMenuProps {
   dailyTransactions: Transaction[],
-  currentDay: string
+  currentDay: string,
+  handleAddTransactionForm: () => void
 }
 
-const TransactionMenu = ({dailyTransactions,currentDay}:TransactionMenuProps) => {
+const TransactionMenu = ({dailyTransactions,currentDay,handleAddTransactionForm}:TransactionMenuProps) => {
   const menuDrawerWidth = 320;
   return (
     <Drawer
@@ -61,7 +62,7 @@ const TransactionMenu = ({dailyTransactions,currentDay}:TransactionMenuProps) =>
             <Typography variant="body1">内訳</Typography>
           </Box>
           {/* 右側の追加ボタン */}
-          <Button startIcon={<AddCircleIcon />} color="primary">
+          <Button startIcon={<AddCircleIcon />} color="primary" onClick={handleAddTransactionForm}>
             内訳を追加
           </Button>
         </Box>
