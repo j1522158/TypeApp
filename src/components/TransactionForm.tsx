@@ -14,17 +14,18 @@ import CloseIcon from "@mui/icons-material/Close"; // 閉じるボタン用の�
 import FastfoodIcon from "@mui/icons-material/Fastfood"; //食事アイコン
 
 interface TransactionFormProps {
-  onCloseForm: () => void
+  onCloseForm: () => void,
+  isEntryDrawerOpen: boolean
 }
 
-const TransactionForm = ({onCloseForm}: TransactionFormProps) => {
+const TransactionForm = ({onCloseForm, isEntryDrawerOpen}: TransactionFormProps) => {
   const formWidth = 320;
   return (
     <Box
       sx={{
         position: "fixed",
         top: 64,
-        right: formWidth, // フォームの位置を調整
+        right: {isEntryDrawerOpen} ? formWidth : "-2%", // フォームの位置を調整
         width: formWidth,
         height: "100%",
         bgcolor: "background.paper",
