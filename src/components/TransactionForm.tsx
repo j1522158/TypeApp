@@ -13,7 +13,11 @@ import React from "react";
 import CloseIcon from "@mui/icons-material/Close"; // 閉じるボタン用のアイコン
 import FastfoodIcon from "@mui/icons-material/Fastfood"; //食事アイコン
 
-const TransactionForm = () => {
+interface TransactionFormProps {
+  onCloseForm: () => void
+}
+
+const TransactionForm = ({onCloseForm}: TransactionFormProps) => {
   const formWidth = 320;
   return (
     <Box
@@ -40,6 +44,7 @@ const TransactionForm = () => {
         <Typography variant="h6">入力</Typography>
         {/* 閉じるボタン */}
         <IconButton
+          onClick={onCloseForm}
           sx={{
             color: (theme) => theme.palette.grey[500],
           }}

@@ -16,12 +16,17 @@ const Home = ({monthlyTransactions,setCurrentMonth}: HomeProps) => {
   const today = format (new Date(), "yyyy-MM-dd");
   console.log(today);
   const[currentDay,setCurrentDay] = useState(today);
+  const[isEntryDrawerOpen, setIsEntryDrawerOpen] = useState(false);
 
   // 選択した1日分のデータ取得
   const dailyTransactions = monthlyTransactions.filter((transaction) => {
     return transaction.date === currentDay;
   });
   console.log(dailyTransactions);
+
+  const closeForm = () => {
+    setIsEntryDrawerOpen(!isEntryDrawerOpen)
+  };
 
   return (
     <Box sx={{display: 'flex'}}>
@@ -39,7 +44,7 @@ const Home = ({monthlyTransactions,setCurrentMonth}: HomeProps) => {
       {/* 右 */}
       <Box>
         <TransactionMenu dailyTransactions={dailyTransactions} currentDay={currentDay}/>
-        {/* <TransactionForm /> */}
+        <TransactionForm onCloseForm={closeForm}/>
       </Box>
     </Box>
   )
