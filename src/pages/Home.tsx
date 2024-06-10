@@ -30,7 +30,6 @@ const Home = ({monthlyTransactions,setCurrentMonth}: HomeProps) => {
 
   return (
     <Box sx={{display: 'flex'}}>
-      {/* 左 */}
       <Box sx={{flexGrow: 1}}>
         <MonthlySummary monthlyTransactions={monthlyTransactions}/>
         <Calendar 
@@ -41,7 +40,6 @@ const Home = ({monthlyTransactions,setCurrentMonth}: HomeProps) => {
           today={today}
         />
       </Box>
-      {/* 右 */}
       <Box>
         <TransactionMenu dailyTransactions={dailyTransactions} currentDay={currentDay}/>
         <TransactionForm onCloseForm={closeForm}/>
