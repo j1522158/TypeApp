@@ -10,6 +10,7 @@ import { formatCurrency } from '../utils/formatting'
 import interactionPlugin, { DateClickArg } from '@fullcalendar/interaction'
 import { theme } from '../theme/theme'
 import { useTheme } from '@mui/material'
+import { isSameMonth } from 'date-fns'
 
 interface CalenderProps {
   monthlyTransactions: Transaction[],
@@ -65,8 +66,12 @@ const Calendar = ({monthlyTransactions, setCurrentMonth, setCurrentDay, currentD
   }
 
   const handleDateSet = (datesetInfo:DatesSetArg) => {
-    setCurrentMonth(datesetInfo.view.currentStart);
-    setCurrentDay(today);
+    const currentMonth = datesetInfo.view.currentStart;
+    setCurrentMonth(currentMonth);
+    const todayDate = new Date();
+    if(isSameMonth(todayDate, currentMonth)){
+      setCurrentDay(today);
+    }
   }
 
   const handleDateClick = (dateInfo: DateClickArg) => {
